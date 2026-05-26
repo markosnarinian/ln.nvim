@@ -1,8 +1,8 @@
 local M = {}
 
 M.config = {
-	absolute_events = { "WinLeave" },
-	relative_events = { "WinEnter" },
+	absolute_events = { "WinLeave", "InsertEnter", "CmdlineEnter", "TermEnter" },
+	relative_events = { "WinEnter", "InsertLeave", "CmdlineLeave", "TermLeave" },
 }
 
 function M.setup(opts)
