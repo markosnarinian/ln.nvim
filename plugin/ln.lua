@@ -1,4 +1,4 @@
 if vim.g.loaded_ln then
-	return
+    return
 end
 vim.g.loaded_ln = true
