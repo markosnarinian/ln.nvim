@@ -3,7 +3,7 @@ local M = {}
 M.config = {
 	absolute_events = { "WinLeave", "InsertEnter", "TermEnter", "CmdlineEnter" },
 	relative_events = { "WinEnter", "InsertLeave", "TermLeave", "CmdlineLeave" },
-	neotree_force_relative = true,
+	neotree_force_relative = false,
 }
 
 function M.setup(opts)
@@ -18,7 +18,6 @@ function M.setup(opts)
 	vim.api.nvim_create_autocmd(M.config.absolute_events, {
 		group = group,
 		callback = function(ev)
-			vim.wo.number = vim.go.number
 			vim.wo.relativenumber = false
 			if ev.event == "CmdlineEnter" then
 				vim.cmd("redraw")
@@ -29,13 +28,25 @@ function M.setup(opts)
 	vim.api.nvim_create_autocmd(M.config.relative_events, {
 		group = group,
 		callback = function(ev)
-			vim.wo.number = vim.go.number
 			vim.wo.relativenumber = true
 			if ev.event == "CmdlineLeave" then
 				vim.cmd("redraw")
 			end
 		end,
 	})
+
+	if M.config.neotree_force_relative then
+		vim.api.nvim_create_autocmd("FileType", {
+			pattern = "neo-tree",
+			group = group,
+			callback = function()
+				vim.schedule(function()
+					vim.wo.number = true
+					vim.wo.relativenumber = true
+				end)
+			end,
+		})
+	end
 end
 
 return M
