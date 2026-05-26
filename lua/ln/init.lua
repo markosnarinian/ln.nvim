@@ -3,7 +3,6 @@ local M = {}
 M.config = {
     absolute_events = { "WinLeave", "InsertEnter", "TermEnter", "CmdlineEnter" },
     relative_events = { "WinEnter", "InsertLeave", "TermLeave", "CmdlineLeave" },
-    neotree_force_relative = false,
     exclude = {
         "TelescopePrompt",
         "lazy",
