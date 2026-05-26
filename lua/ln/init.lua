@@ -4,6 +4,20 @@ M.config = {
 	absolute_events = { "WinLeave", "InsertEnter", "TermEnter", "CmdlineEnter" },
 	relative_events = { "WinEnter", "InsertLeave", "TermLeave", "CmdlineLeave" },
 	neotree_force_relative = false,
+	exclude = {
+		"TelescopePrompt",
+		"lazy",
+		"mason",
+		"checkhealth",
+		"help",
+		"Trouble",
+		"fzf",
+		"toggleterm",
+		"startify",
+		"undotree",
+		"dashboard",
+		"snacks_dashboard",
+	},
 }
 
 function M.setup(opts)
@@ -32,6 +46,15 @@ function M.setup(opts)
 			if ev.event == "CmdlineLeave" then
 				vim.cmd("redraw")
 			end
+		end,
+	})
+
+	vim.api.nvim_create_autocmd("FileType", {
+		group = group,
+		pattern = M.config.exclude,
+		callback = function()
+			vim.wo.number = false
+			vim.wo.relativenumber = false
 		end,
 	})
 
