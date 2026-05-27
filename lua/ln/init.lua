@@ -26,11 +26,24 @@ function M.setup(opts)
     vim.o.relativenumber = false
     vim.wo.relativenumber = true
 
+    local function has_value(tab, val)
+        for _, value in ipairs(tab) do
+            if value == val then
+                return true
+            end
+        end
+
+        return false
+    end
+
     local group = vim.api.nvim_create_augroup("ln", { clear = true })
 
     vim.api.nvim_create_autocmd(M.config.absolute_events, {
         group = group,
         callback = function(ev)
+            if has_value(M.config.exclude, vim.bo.filetype) then
+                return
+            end
             vim.wo.relativenumber = false
             if ev.event == "CmdlineEnter" then
                 vim.cmd("redraw")
@@ -41,6 +54,9 @@ function M.setup(opts)
     vim.api.nvim_create_autocmd(M.config.relative_events, {
         group = group,
         callback = function(ev)
+            if has_value(M.config.exclude, vim.bo.filetype) then
+                return
+            end
             vim.wo.relativenumber = true
             if ev.event == "CmdlineLeave" then
                 vim.cmd("redraw")
