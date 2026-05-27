@@ -56,19 +56,6 @@ function M.setup(opts)
             vim.wo.relativenumber = false
         end,
     })
-
-    if M.config.neotree_force_relative then
-        vim.api.nvim_create_autocmd("FileType", {
-            pattern = "neo-tree",
-            group = group,
-            callback = function()
-                vim.schedule(function()
-                    vim.wo.number = true
-                    vim.wo.relativenumber = true
-                end)
-            end,
-        })
-    end
 end
 
 return M
