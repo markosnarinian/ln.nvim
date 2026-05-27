@@ -16,6 +16,7 @@ M.config = {
         "undotree",
         "dashboard",
         "snacks_dashboard",
+        "aerial",
     },
 }
 
