@@ -13,7 +13,6 @@ Automatically switches between relative and absolute line numbers based on conte
     opts = {
         absolute_events = { "WinLeave", "InsertEnter", "TermEnter", "CmdlineEnter" },
         relative_events = { "WinEnter", "InsertLeave", "TermLeave", "CmdlineLeave" },
-        neotree_force_relative = false,
         exclude = {
             "TelescopePrompt",
             "lazy",
