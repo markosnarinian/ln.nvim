@@ -1,8 +1,8 @@
 local M = {}
 
 M.config = {
-    absolute_events = { "WinLeave", "InsertEnter", "TermEnter", "CmdlineEnter" },
-    relative_events = { "WinEnter", "InsertLeave", "TermLeave", "CmdlineLeave" },
+    absolute_events = { "WinLeave", "TermEnter", "CmdlineEnter" },
+    relative_events = { "WinEnter", "TermLeave", "CmdlineLeave" },
     exclude = {
         "TelescopePrompt",
         "lazy",
