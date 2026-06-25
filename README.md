@@ -11,8 +11,8 @@ Automatically switches between relative and absolute line numbers based on conte
 {
     "markosnarinian/ln.nvim",
     opts = {
-        absolute_events = { "WinLeave", "InsertEnter", "TermEnter", "CmdlineEnter" },
-        relative_events = { "WinEnter", "InsertLeave", "TermLeave", "CmdlineLeave" },
+        absolute_events = { "WinLeave", "TermEnter", "CmdlineEnter" },
+        relative_events = { "WinEnter", "TermLeave", "CmdlineLeave" },
         exclude = {
             "TelescopePrompt",
             "lazy",
