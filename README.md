@@ -27,6 +27,7 @@ Automatically switches between relative and absolute line numbers based on conte
             "dashboard",
             "snacks_dashboard",
             "aerial",
+            "nofile",
         },
     },
 }

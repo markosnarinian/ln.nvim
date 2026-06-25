@@ -17,6 +17,7 @@ M.config = {
         "dashboard",
         "snacks_dashboard",
         "aerial",
+        "nofile",
     },
 }
 
